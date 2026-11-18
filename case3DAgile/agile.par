@@ -1,0 +1,74 @@
+ &filelist
+    base_filename = 'output/hvc3d_'
+    saveprim      = .true.
+    autoconvert   = .true.
+    convert_type  = 'vtuBCCmpi'
+ /
+
+ &savelist
+    dtsave_log  = 0.1d0
+    dtsave_dat  = 1.5d0
+    itsave(1,2) = 0
+ /
+
+ &stoplist
+    time_max = 100.0d0
+ /
+
+ &methodlist
+    time_stepper        = 'threestep'
+    flux_scheme         = 20*'hllc'
+    limiter             = 20*'koren'
+    phys                = 'hd'
+ /
+
+ &boundlist
+    typeboundary_min1 = 5*'cont'
+    typeboundary_max1 = 5*'cont'
+    typeboundary_min2 = 5*'cont'
+    typeboundary_max2 = 5*'cont'
+    typeboundary_min3 = 'cont','cont','cont','noinflow','cont'
+    typeboundary_max3 = 'cont','cont','cont','noinflow','cont'
+ /
+
+
+ &meshlist
+    refine_max_level = 5
+    refine_criterion = 3
+    refine_usr       = .true.
+    max_blocks       = 4096
+
+    domain_nx1 = 32
+    domain_nx2 = 32
+    domain_nx3 = 128
+
+    w_refine_weight(1) = 0.5d0
+    w_refine_weight(5) = 0.5d0
+   
+    block_nx1  = 8
+    block_nx2  = 8
+    block_nx3  = 8
+
+    xprobmin1  = -800.0d0
+    xprobmax1  =  800.0d0
+    xprobmin2  = -800.0d0
+    xprobmax2  =  800.0d0
+    xprobmin3  = -1200.0d0
+    xprobmax3  =  5200.0d0
+ /
+
+ &paramlist
+    courantpar = 0.5d0
+ /
+
+ &hd_list
+    hd_energy   = .true.
+    hd_gravity  = .true.
+    hd_n_tracer = 1
+ /
+
+ &bg_list
+    R0 = 8.122d0
+    p_top_k = 5.4d-13
+ /
+
