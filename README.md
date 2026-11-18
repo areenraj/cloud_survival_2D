@@ -2,7 +2,13 @@
 
 This project is a reproduction and expansion of the original case setup outlined in - https://doi.org/10.1093/mnras/stag1405. We have successfully reproduced the original 3D setup in AGILE and included a 2D translation of the simulation. Currently, only the adiabatic case is supported.
 
+### Usage
 To prescribe the background profiles for the case, we have made the use of lookup tables defined in the `mod_background` files. These must be included while building AMRVAC and, hence, custom makefiles that do so have been provided - please make use of them.
+
+For AGILE, please replace this line in your `make/30-fypp.mk`
+```
+source_files := $(shell find $(agile)/src -name '*.fpp') mod_usr.fpp $(usr_sources)
+```
 
 The current resolution for the lookup table is 50000 points for gravity, pressure and density. `p_offset` is a constant offset value added to the pressure profile which is a normalization choice - its value is given in CGS - $5.4 \times 10^{-13} \mathrm{dyn/cm}^2$ and has been confirmed by the authors of the paper.
 
